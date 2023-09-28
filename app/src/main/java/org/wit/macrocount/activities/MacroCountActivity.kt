@@ -11,6 +11,7 @@ class MacroCountActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMacrocountBinding
     var macroCount = MacroCountModel()
+    var macroCounts = ArrayList<MacroCountModel>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -24,6 +25,8 @@ class MacroCountActivity : AppCompatActivity() {
             macroCount.title = binding.macroCountTitle.text.toString()
             if (macroCount.title.isNotEmpty()) {
                 i("add Button Pressed: $macroCount.title")
+                macroCounts.add(macroCount)
+                i("Total MacroCounts: $macroCounts")
             }
             else {
                 Snackbar

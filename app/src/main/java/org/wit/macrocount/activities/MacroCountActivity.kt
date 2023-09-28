@@ -23,6 +23,7 @@ class MacroCountActivity : AppCompatActivity() {
 
         binding.btnAdd.setOnClickListener() {
             macroCount.title = binding.macroCountTitle.text.toString()
+            macroCount.description = binding.macroCountDescription.text.toString()
             if (macroCount.title.isNotEmpty()) {
                 i("add Button Pressed: $macroCount.title")
                 macroCounts.add(macroCount)

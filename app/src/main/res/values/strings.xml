@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">MacroCount</string>
-    <string name="button_addItem">Add Item</string>
-    <string name="hint_itemTitle">Item Title</string>
+    <string name="button_addItem">Add MacroCount</string>
+    <string name="hint_macroCountTitle">MacroCount Title</string>
+    <string name="hint_macroCountDescription">MacroCount Description</string>
 </resources>

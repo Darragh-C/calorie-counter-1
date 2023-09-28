@@ -13,6 +13,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "CalorieCounter"
+rootProject.name = "MacroCount"
 include(":app")
  

@@ -1,18 +1,19 @@
-package org.wit.caloriecounter
+package org.wit.macrocount.activities
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import org.wit.caloriecounter.databinding.ActivityCaloriecounterBinding
+import org.wit.macrocount.databinding.ActivityMacrocountBinding
+
 import timber.log.Timber
 import timber.log.Timber.Forest.i
 
-class CalorieCounterActivity : AppCompatActivity() {
+class MacroCountActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityCaloriecounterBinding
+    private lateinit var binding: ActivityMacrocountBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = ActivityCaloriecounterBinding.inflate(layoutInflater)
+        binding = ActivityMacrocountBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         Timber.plant(Timber.DebugTree())

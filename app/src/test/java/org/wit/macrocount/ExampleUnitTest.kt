@@ -1,4 +1,4 @@
-package org.wit.caloriecounter
+package org.wit.macrocount
 
 import org.junit.Test
 

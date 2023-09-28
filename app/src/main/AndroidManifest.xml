@@ -10,10 +10,10 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.CalorieCounter"
+        android:theme="@style/Theme.MacroCount"
         tools:targetApi="31">
         <activity
-            android:name=".CalorieCounterActivity"
+            android:name=".activities.MacroCountActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

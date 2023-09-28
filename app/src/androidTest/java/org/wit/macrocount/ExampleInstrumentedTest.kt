@@ -1,4 +1,4 @@
-package org.wit.caloriecounter
+package org.wit.macrocount
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

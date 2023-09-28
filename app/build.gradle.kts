@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "org.wit.caloriecounter"
+    namespace = "org.wit.macrocount"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "org.wit.caloriecounter"
+        applicationId = "org.wit.macrocount"
         minSdk = 30
         targetSdk = 34
         versionCode = 1

@@ -24,15 +24,20 @@ class MacroCountActivity : AppCompatActivity() {
         binding.btnAdd.setOnClickListener() {
             macroCount.title = binding.macroCountTitle.text.toString()
             macroCount.description = binding.macroCountDescription.text.toString()
-            if (macroCount.title.isNotEmpty()) {
-                i("add Button Pressed: $macroCount.title")
-                macroCounts.add(macroCount)
-                i("Total MacroCounts: $macroCounts")
-            }
-            else {
+            if (macroCount.title.isEmpty()) {
                 Snackbar
                     .make(it,"Please Enter a title", Snackbar.LENGTH_LONG)
                     .show()
+            }
+            else if (macroCount.description.isEmpty()) {
+                Snackbar
+                    .make(it,"Please Enter a description", Snackbar.LENGTH_LONG)
+                    .show()
+            }
+            else {
+                i("macroCount added: $macroCount")
+                macroCounts.add(macroCount)
+                i("Total MacroCounts: $macroCounts")
             }
         }
     }

@@ -3,4 +3,5 @@
     <string name="button_addItem">Add MacroCount</string>
     <string name="hint_macroCountTitle">MacroCount Title</string>
     <string name="hint_macroCountDescription">MacroCount Description</string>
+
 </resources>

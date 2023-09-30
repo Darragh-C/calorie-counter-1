@@ -35,9 +35,13 @@ class MacroCountActivity : AppCompatActivity() {
                     .show()
             }
             else {
-                i("macroCount added: $macroCount")
-                macroCounts.add(macroCount)
-                i("Total MacroCounts: $macroCounts")
+                i("macroCount added: $macroCount.title")
+                macroCounts.add(macroCount.copy())
+                i("Total MacroCounts: ")
+                for (i in macroCounts.indices)
+                {
+                    i("MacroCount[$i]:${this.macroCounts[i]}")
+                }
             }
         }
     }

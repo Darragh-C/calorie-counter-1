@@ -9,9 +9,10 @@ import timber.log.Timber.Forest.i
 
 class MacroCountActivity : AppCompatActivity() {
 
+    lateinit var app : MainApp
     private lateinit var binding: ActivityMacrocountBinding
     var macroCount = MacroCountModel()
-    lateinit var app : MainApp
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 

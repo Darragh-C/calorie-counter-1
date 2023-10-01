@@ -11,5 +11,8 @@ class MainApp : Application() {
         super.onCreate()
         Timber.plant(Timber.DebugTree())
         i("MacroCount started")
+        macroCounts.add(MacroCountModel("One", "About one..."))
+        macroCounts.add(MacroCountModel("Two", "About two..."))
+        macroCounts.add(MacroCountModel("Three", "About three..."))
     }
 }

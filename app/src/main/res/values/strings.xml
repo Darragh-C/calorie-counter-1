@@ -3,5 +3,9 @@
     <string name="button_addItem">Add MacroCount</string>
     <string name="hint_macroCountTitle">MacroCount Title</string>
     <string name="hint_macroCountDescription">MacroCount Description</string>
+    <string name="hint_macroCountCalories">Calorie Count</string>
+    <string name="hint_macroCountProtein">Protein Count</string>
+    <string name="hint_macroCountCarbs">Carbohydrate Count</string>
+    <string name="hint_macroCountFat">Fat Count</string>
 
 </resources>

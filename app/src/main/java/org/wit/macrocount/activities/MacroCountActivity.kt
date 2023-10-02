@@ -26,6 +26,10 @@ class MacroCountActivity : AppCompatActivity() {
         binding.btnAdd.setOnClickListener() {
             macroCount.title = binding.macroCountTitle.text.toString()
             macroCount.description = binding.macroCountDescription.text.toString()
+            macroCount.calories = binding.macroCountCalories.text.toString()
+            macroCount.carbs = binding.macroCountCarbs.text.toString()
+            macroCount.protein = binding.macroCountProtein.text.toString()
+            macroCount.fat = binding.macroCountFat.text.toString()
 
             if (macroCount.title.isEmpty()) {
                 Snackbar

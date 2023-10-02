@@ -43,6 +43,8 @@ class MacroCountActivity : AppCompatActivity() {
                 for (i in app.macroCounts.indices)
                 {
                     i("MacroCount[$i]:${app.macroCounts[i]}")
+                    setResult(RESULT_OK)
+                    finish()
                 }
             }
         }

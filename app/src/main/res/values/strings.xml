@@ -8,4 +8,6 @@
     <string name="hint_macroCountCarbs">Carbohydrate Count</string>
     <string name="hint_macroCountFat">Fat Count</string>
 
+    <string name="menu_addMacroCount">Add</string>
+
 </resources>

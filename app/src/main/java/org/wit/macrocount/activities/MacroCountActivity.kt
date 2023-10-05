@@ -38,7 +38,7 @@ class MacroCountActivity : AppCompatActivity() {
             }
             else {
                 i("macroCount added: $macroCount.title")
-                app.macroCounts.add(macroCount.copy())
+                app.macroCounts.create(macroCount.copy())
                 i("Total MacroCounts: ")
                 for (i in app.macroCounts.indices)
                 {

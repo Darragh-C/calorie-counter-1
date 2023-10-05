@@ -32,7 +32,7 @@ class MacroCountListActivity : AppCompatActivity() {
 
         val layoutManager = LinearLayoutManager(this)
         binding.recyclerView.layoutManager = layoutManager
-        binding.recyclerView.adapter = MacroCountAdapter(app.macroCounts)
+        binding.recyclerView.adapter = MacroCountAdapter(app.macroCounts.findAll())
 
     }
 
@@ -57,7 +57,7 @@ class MacroCountListActivity : AppCompatActivity() {
         ) {
             if (it.resultCode == Activity.RESULT_OK) {
                 (binding.recyclerView.adapter)?.
-                notifyItemRangeChanged(0,app.macroCounts.size)
+                notifyItemRangeChanged(0,app.macroCounts.findAll().size)
             }
         }
 }

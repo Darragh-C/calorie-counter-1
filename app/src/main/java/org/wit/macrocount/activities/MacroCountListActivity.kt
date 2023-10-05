@@ -17,7 +17,7 @@ import org.wit.macrocount.databinding.CardMacrocountBinding
 import org.wit.macrocount.main.MainApp
 import org.wit.macrocount.models.MacroCountModel
 
-class MacroCountListActivity : AppCompatActivity() {
+class MacroCountListActivity : AppCompatActivity(), MacroCountListener {
     lateinit var app: MainApp
     private lateinit var binding: ActivityMacrocountListBinding
 
@@ -32,7 +32,7 @@ class MacroCountListActivity : AppCompatActivity() {
 
         val layoutManager = LinearLayoutManager(this)
         binding.recyclerView.layoutManager = layoutManager
-        binding.recyclerView.adapter = MacroCountAdapter(app.macroCounts.findAll())
+        binding.recyclerView.adapter = MacroCountAdapter(app.macroCounts.findAll(), this)
 
     }
 
@@ -60,9 +60,29 @@ class MacroCountListActivity : AppCompatActivity() {
                 notifyItemRangeChanged(0,app.macroCounts.findAll().size)
             }
         }
+
+    override fun onMacroCountClick(macroCount: MacroCountModel) {
+        val launcherIntent = Intent(this, MacroCountActivity::class.java)
+        getClickResult.launch(launcherIntent)
+    }
+
+    private val getClickResult =
+        registerForActivityResult(
+            ActivityResultContracts.StartActivityForResult()
+        ) {
+            if (it.resultCode == Activity.RESULT_OK) {
+                (binding.recyclerView.adapter)?.
+                notifyItemRangeChanged(0,app.macroCounts.findAll().size)
+            }
+        }
 }
 
-class MacroCountAdapter constructor(private var macroCounts: List<MacroCountModel>):
+interface MacroCountListener{
+    fun onMacroCountClick(macroCount: MacroCountModel)
+}
+
+class MacroCountAdapter constructor(private var macroCounts: List<MacroCountModel>,
+                                    private val listener: MacroCountListener):
 
     RecyclerView.Adapter<MacroCountAdapter.MainHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder {
@@ -74,7 +94,7 @@ class MacroCountAdapter constructor(private var macroCounts: List<MacroCountMode
 
     override fun onBindViewHolder(holder: MainHolder, position: Int) {
         val macroCount = macroCounts[holder.adapterPosition]
-        holder.bind(macroCount)
+        holder.bind(macroCount, listener)
     }
 
     override fun getItemCount(): Int = macroCounts.size
@@ -82,9 +102,11 @@ class MacroCountAdapter constructor(private var macroCounts: List<MacroCountMode
     class MainHolder(private val binding : CardMacrocountBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(macroCount: MacroCountModel) {
+        fun bind(macroCount: MacroCountModel, listener: MacroCountListener) {
             binding.macroCounterTitle.text = macroCount.title
             binding.description.text = macroCount.description
+            binding.root.setOnClickListener { listener.onMacroCountClick(macroCount) }
+
         }
     }
 }

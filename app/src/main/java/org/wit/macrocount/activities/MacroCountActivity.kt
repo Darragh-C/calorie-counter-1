@@ -23,6 +23,16 @@ class MacroCountActivity : AppCompatActivity() {
 
         i("MacroCount started..")
 
+        if (intent.hasExtra("macrocount_edit")) {
+            macroCount = intent.extras?.getParcelable("macrocount_edit")!!
+            binding.macroCountTitle.setText(macroCount.title)
+            binding.macroCountDescription.setText(macroCount.description)
+            binding.macroCountCalories.setText(macroCount.calories)
+            binding.macroCountCarbs.setText(macroCount.carbs)
+            binding.macroCountProtein.setText(macroCount.protein)
+            binding.macroCountFat.setText(macroCount.fat)
+        }
+
         binding.btnAdd.setOnClickListener() {
             macroCount.title = binding.macroCountTitle.text.toString()
             macroCount.description = binding.macroCountDescription.text.toString()

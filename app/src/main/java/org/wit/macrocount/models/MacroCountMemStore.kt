@@ -1,6 +1,6 @@
 package org.wit.macrocount.models
 import timber.log.Timber.Forest.i
-interface MacroCountMemStore: MacroCountStore {
+class MacroCountMemStore: MacroCountStore {
 
     val macroCounts = ArrayList<MacroCountModel>()
 

@@ -9,5 +9,6 @@
     <string name="hint_macroCountFat">Fat Count</string>
 
     <string name="menu_addMacroCount">Add</string>
+    <string name="menu_cancelMacroCount">Cancel</string>
 
 </resources>

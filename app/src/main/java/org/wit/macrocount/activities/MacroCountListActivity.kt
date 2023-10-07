@@ -3,17 +3,15 @@ package org.wit.macrocount.activities
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
-import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import org.wit.macrocount.R
+import org.wit.macrocount.adapters.MacroCountAdapter
+import org.wit.macrocount.adapters.MacroCountListener
 import org.wit.macrocount.databinding.ActivityMacrocountListBinding
-import org.wit.macrocount.databinding.CardMacrocountBinding
 import org.wit.macrocount.main.MainApp
 import org.wit.macrocount.models.MacroCountModel
 
@@ -78,36 +76,4 @@ class MacroCountListActivity : AppCompatActivity(), MacroCountListener {
         }
 }
 
-interface MacroCountListener{
-    fun onMacroCountClick(macroCount: MacroCountModel)
-}
 
-class MacroCountAdapter constructor(private var macroCounts: List<MacroCountModel>,
-                                    private val listener: MacroCountListener):
-
-    RecyclerView.Adapter<MacroCountAdapter.MainHolder>() {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder {
-        val binding = CardMacrocountBinding
-            .inflate(LayoutInflater.from(parent.context), parent, false)
-
-        return MainHolder(binding)
-    }
-
-    override fun onBindViewHolder(holder: MainHolder, position: Int) {
-        val macroCount = macroCounts[holder.adapterPosition]
-        holder.bind(macroCount, listener)
-    }
-
-    override fun getItemCount(): Int = macroCounts.size
-
-    class MainHolder(private val binding : CardMacrocountBinding) :
-        RecyclerView.ViewHolder(binding.root) {
-
-        fun bind(macroCount: MacroCountModel, listener: MacroCountListener) {
-            binding.macroCounterTitle.text = macroCount.title
-            binding.description.text = macroCount.description
-            binding.root.setOnClickListener { listener.onMacroCountClick(macroCount) }
-
-        }
-    }
-}

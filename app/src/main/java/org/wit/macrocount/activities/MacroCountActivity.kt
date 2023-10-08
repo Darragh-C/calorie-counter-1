@@ -39,6 +39,7 @@ class MacroCountActivity : AppCompatActivity() {
             binding.macroCountCarbs.setText(macroCount.carbs)
             binding.macroCountProtein.setText(macroCount.protein)
             binding.macroCountFat.setText(macroCount.fat)
+            binding.btnAdd.text = getString(R.string.button_saveItem)
         }
 
         binding.btnAdd.setOnClickListener() {
@@ -51,7 +52,7 @@ class MacroCountActivity : AppCompatActivity() {
 
             if (macroCount.title.isEmpty()) {
                 Snackbar
-                    .make(it,"Please Enter a title", Snackbar.LENGTH_LONG)
+                    .make(it, getString(R.string.snackbar_macroCountTitle), Snackbar.LENGTH_LONG)
                     .show()
             }
             else {

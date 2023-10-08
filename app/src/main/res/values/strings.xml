@@ -7,8 +7,9 @@
     <string name="hint_macroCountProtein">Protein Count</string>
     <string name="hint_macroCountCarbs">Carbohydrate Count</string>
     <string name="hint_macroCountFat">Fat Count</string>
-
+    <string name="snackbar_macroCountTitle">Please Enter a title</string>
     <string name="menu_addMacroCount">Add</string>
     <string name="menu_cancelMacroCount">Cancel</string>
+    <string name="button_saveItem">Save</string>
 
 </resources>

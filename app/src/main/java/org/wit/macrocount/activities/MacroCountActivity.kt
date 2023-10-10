@@ -7,6 +7,7 @@ import com.google.android.material.snackbar.Snackbar
 import org.wit.macrocount.R
 import org.wit.macrocount.databinding.ActivityMacrocountBinding
 import org.wit.macrocount.main.MainApp
+import org.wit.macrocount.models.DataValUtil
 import org.wit.macrocount.models.MacroCountModel
 import timber.log.Timber.Forest.i
 
@@ -39,21 +40,32 @@ class MacroCountActivity : AppCompatActivity() {
             binding.macroCountCarbs.setText(macroCount.carbs)
             binding.macroCountProtein.setText(macroCount.protein)
             binding.macroCountFat.setText(macroCount.fat)
-            binding.btnAdd.text = getString(R.string.button_saveItem)
+            binding.btnAdd.setText(R.string.save_macroCount)
         }
 
         binding.btnAdd.setOnClickListener() {
             macroCount.title = binding.macroCountTitle.text.toString()
             macroCount.description = binding.macroCountDescription.text.toString()
-            macroCount.calories = binding.macroCountCalories.text.toString()
+            //macroCount.calories = binding.macroCountCalories.text.toString()
             macroCount.carbs = binding.macroCountCarbs.text.toString()
             macroCount.protein = binding.macroCountProtein.text.toString()
             macroCount.fat = binding.macroCountFat.text.toString()
+            val caloriesInput = binding.macroCountCalories.text.toString()
+
 
             if (macroCount.title.isEmpty()) {
                 Snackbar
-                    .make(it, getString(R.string.snackbar_macroCountTitle), Snackbar.LENGTH_LONG)
+                    .make(it, R.string.snackbar_macroCountTitle, Snackbar.LENGTH_LONG)
                     .show()
+            }
+            else if (caloriesInput.isNotEmpty()) {
+                if (DataValUtil.validNum(caloriesInput)) {
+                    macroCount.calories = caloriesInput
+                } else {
+                    Snackbar
+                        .make(it, R.string.snackbar_macroCountCalories, Snackbar.LENGTH_LONG)
+                        .show()
+                }
             }
             else {
                 i("macroCount added: $macroCount.title")

@@ -47,47 +47,30 @@ class MacroCountActivity : AppCompatActivity() {
             macroCount.title = binding.macroCountTitle.text.toString()
             macroCount.description = binding.macroCountDescription.text.toString()
 
-            val carbsInput = binding.macroCountCarbs.text.toString()
-            val proteinInput = binding.macroCountProtein.text.toString()
-            val fatInput = binding.macroCountFat.text.toString()
-            val caloriesInput = binding.macroCountCalories.text.toString()
+            macroCount.carbs = binding.macroCountCarbs.text.toString()
+            macroCount.protein = binding.macroCountProtein.text.toString()
+            macroCount.fat = binding.macroCountFat.text.toString()
+            macroCount.calories = binding.macroCountCalories.text.toString()
 
+
+            val validationChecks = listOf(
+                Pair(macroCount.title.isEmpty(), R.string.snackbar_macroCountTitle),
+                Pair(macroCount.calories.isNotEmpty() && !DataValUtil.validNum(macroCount.calories), R.string.snackbar_macroCountCalories),
+                Pair(macroCount.carbs.isNotEmpty() && !DataValUtil.validNum(macroCount.carbs), R.string.snackbar_macroCountCarbs),
+                Pair(macroCount.protein.isNotEmpty() && !DataValUtil.validNum(macroCount.protein), R.string.snackbar_macroCountProtein),
+                Pair(macroCount.fat.isNotEmpty() && !DataValUtil.validNum(macroCount.fat), R.string.snackbar_macroCountFat)
+            )
 
             var validationFailed = false
 
-            if (macroCount.title.isEmpty()) {
-                Snackbar
-                    .make(it, R.string.snackbar_macroCountTitle, Snackbar.LENGTH_LONG)
-                    .show()
-                validationFailed = true
-            }
-
-            if (caloriesInput.isNotEmpty() && !DataValUtil.validNum(caloriesInput)) {
-                Snackbar
-                    .make(it, R.string.snackbar_macroCountCalories, Snackbar.LENGTH_LONG)
-                    .show()
-                validationFailed = true
-            }
-
-            if (carbsInput.isNotEmpty() && !DataValUtil.validNum(carbsInput)) {
-                Snackbar
-                    .make(it, R.string.snackbar_macroCountCarbs, Snackbar.LENGTH_LONG)
-                    .show()
-                validationFailed = true
-            }
-
-            if (proteinInput.isNotEmpty() && !DataValUtil.validNum(proteinInput)) {
-                Snackbar
-                    .make(it, R.string.snackbar_macroCountProtein, Snackbar.LENGTH_LONG)
-                    .show()
-                validationFailed = true
-            }
-
-            if (fatInput.isNotEmpty() && !DataValUtil.validNum(fatInput)) {
-                Snackbar
-                    .make(it, R.string.snackbar_macroCountFat, Snackbar.LENGTH_LONG)
-                    .show()
-                validationFailed = true
+            for (check in validationChecks) {
+                if (check.first) {
+                    Snackbar
+                        .make(it, check.second, Snackbar.LENGTH_LONG)
+                        .show()
+                    validationFailed = true
+                    break
+                }
             }
 
             if (!validationFailed) {

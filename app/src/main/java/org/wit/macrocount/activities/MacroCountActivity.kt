@@ -46,33 +46,55 @@ class MacroCountActivity : AppCompatActivity() {
         binding.btnAdd.setOnClickListener() {
             macroCount.title = binding.macroCountTitle.text.toString()
             macroCount.description = binding.macroCountDescription.text.toString()
-            //macroCount.calories = binding.macroCountCalories.text.toString()
-            macroCount.carbs = binding.macroCountCarbs.text.toString()
-            macroCount.protein = binding.macroCountProtein.text.toString()
-            macroCount.fat = binding.macroCountFat.text.toString()
+
+            val carbsInput = binding.macroCountCarbs.text.toString()
+            val proteinInput = binding.macroCountProtein.text.toString()
+            val fatInput = binding.macroCountFat.text.toString()
             val caloriesInput = binding.macroCountCalories.text.toString()
 
+
+            var validationFailed = false
 
             if (macroCount.title.isEmpty()) {
                 Snackbar
                     .make(it, R.string.snackbar_macroCountTitle, Snackbar.LENGTH_LONG)
                     .show()
+                validationFailed = true
             }
-            else if (caloriesInput.isNotEmpty()) {
-                if (DataValUtil.validNum(caloriesInput)) {
-                    macroCount.calories = caloriesInput
-                } else {
-                    Snackbar
-                        .make(it, R.string.snackbar_macroCountCalories, Snackbar.LENGTH_LONG)
-                        .show()
-                }
+
+            if (caloriesInput.isNotEmpty() && !DataValUtil.validNum(caloriesInput)) {
+                Snackbar
+                    .make(it, R.string.snackbar_macroCountCalories, Snackbar.LENGTH_LONG)
+                    .show()
+                validationFailed = true
             }
-            else {
+
+            if (carbsInput.isNotEmpty() && !DataValUtil.validNum(carbsInput)) {
+                Snackbar
+                    .make(it, R.string.snackbar_macroCountCarbs, Snackbar.LENGTH_LONG)
+                    .show()
+                validationFailed = true
+            }
+
+            if (proteinInput.isNotEmpty() && !DataValUtil.validNum(proteinInput)) {
+                Snackbar
+                    .make(it, R.string.snackbar_macroCountProtein, Snackbar.LENGTH_LONG)
+                    .show()
+                validationFailed = true
+            }
+
+            if (fatInput.isNotEmpty() && !DataValUtil.validNum(fatInput)) {
+                Snackbar
+                    .make(it, R.string.snackbar_macroCountFat, Snackbar.LENGTH_LONG)
+                    .show()
+                validationFailed = true
+            }
+
+            if (!validationFailed) {
                 i("macroCount added: $macroCount.title")
                 app.macroCounts.create(macroCount.copy())
                 i("Total MacroCounts: ")
-                for (i in app.macroCounts.findAll().indices)
-                {
+                for (i in app.macroCounts.findAll().indices) {
                     i("MacroCount[$i]:${app.macroCounts.findAll()[i]}")
                     setResult(RESULT_OK)
                     finish()

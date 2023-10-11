@@ -9,6 +9,9 @@
     <string name="hint_macroCountFat">Fat Count</string>
     <string name="snackbar_macroCountTitle">Please Enter a title</string>
     <string name="snackbar_macroCountCalories">Please Enter a number for your calories</string>
+    <string name="snackbar_macroCountCarbs">Please Enter a number for your carbs</string>
+    <string name="snackbar_macroCountProtein">Please Enter a number for your protein</string>
+    <string name="snackbar_macroCountFat">Please Enter a number for your fat</string>
     <string name="menu_addMacroCount">Add</string>
     <string name="menu_cancelMacroCount">Cancel</string>
     <string name="save_macroCount">Save</string>

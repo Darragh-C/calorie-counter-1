@@ -5,7 +5,7 @@ object DataValUtil {
     fun validNum(string: String): Boolean {
         i("Validating number")
         return string.all {
-            it.isDigit()
+            it.isDigit() || it == '.'
         }
     }
 }
